@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            background-image: url('background.jpg'); /* Replace 'background.jpg' with your image file */
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #login-box {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        #login-box select {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        #login-box input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        #login-box button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="login-box">
+    <h2>Login</h2>
+    <form action="#" method="post" onsubmit="return selectOption()">
+        <select id="login-type" onchange="toggleForm()">
+            <option value="orphanage">Orphanage</option>
+            <option value="hotel">Hotel</option>
+        </select>
+        <br>
+        <input type="text" id="username" placeholder="Username" required>
+        <br>
+        <input type="password" id="password" placeholder="Password" required>
+        <br>
+        <input type="text" id="designation" placeholder="Designation" required>
+        <br>
+        <div id="orphanage-fields">
+            <input type="text" id="orphanage-name" placeholder="Orphanage Name" required>
+        </div>
+        <div id="hotel-fields">
+            <input type="text" id="food-items" placeholder="Food Items Available for Donation">
+        </div>
+        <br>
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<script>
+    function toggleForm() {
+        var loginType = document.getElementById("login-type").value;
+        var orphanageFields = document.getElementById("orphanage-fields");
+        var hotelFields = document.getElementById("hotel-fields");
+
+        if (loginType === "orphanage") {
+            orphanageFields.style.display = "block";
+            hotelFields.style.display = "none";
+        } else if (loginType === "hotel") {
+            orphanageFields.style.display = "none";
+            hotelFields.style.display = "block";
+        }
+    }
+
+    function selectOption() {
+        var loginType = document.getElementById("login-type").value;
+
+        if (loginType === "orphanage") {
+            window.location.href = "orphanage.html";
+        } else if (loginType === "hotel") {
+            window.location.href = "hotel.html";
+        }
+
+        return false; // Prevent form submission for this example
+    }
+</script>
+</body>
+</html>
